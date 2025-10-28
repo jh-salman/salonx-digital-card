@@ -1,35 +1,63 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { StyleSheet } from "react-native";
+import { useTheme } from "../../context/ThemeContext";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import PrivateRoute from "@/shared/PrivateRoute";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function Layout() {
+  const { colors } = useTheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <PrivateRoute>
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: colors.primary,
+          tabBarInactiveTintColor: colors.text,
+          tabBarStyle: {
+            backgroundColor: colors.background,
+            borderTopColor: colors.border,
+            borderTopWidth: wp(0.3),
+            paddingTop: hp(1),
+            paddingBottom: hp(2),
+            height: hp(9),
+          },
+          tabBarLabelStyle: {
+            fontSize: wp(3.2),
+            fontWeight: "500",
+          },
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="card"
+          options={{
+            title: "Card",
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons
+                name="credit-card"
+                size={wp(5.5)}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="contacts"
+          options={{
+            title: "Contacts",
+            tabBarIcon: ({ color }) => (
+              <Ionicons
+                name="people"
+                size={wp(5.5)}
+                color={color}
+              />
+            ),
+          }}
+        />
+      </Tabs>
+    </PrivateRoute>
   );
 }
+
+const styles = StyleSheet.create({});
