@@ -29,7 +29,7 @@ const lightColors = {
   text: "#1a1a1a",
   card: "#f9f9f9",
   border: "#e5e5e5",
-  primary: "red",
+  primary: "blue",
   secondary: "#151312",
   accent: "#AB8BFF",
 };
