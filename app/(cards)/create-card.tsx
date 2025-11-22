@@ -1,27 +1,52 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Header from '@/components/card/Header'
+import { useTheme } from '@/context/ThemeContext';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ColorPlate from '@/components/card/ColorPlate';
+import ImageAndLayout from '@/components/card/ImageAndLayout';
+import PersonalDetails from '@/components/card/PersonalDetails';
+import SocialMedia from '@/components/card/SocialMedia';
+import QR from '@/components/card/QR';
+import Settings from '@/components/card/Settings';
+import PreviewCard from '@/components/card/PreviewCard';
+import { navigate } from 'expo-router/build/global-state/routing';
+
+
+
+
+
 
 const createCard = () => {
+  const {colors} = useTheme();
   return (
-    <View>
-      {/* header section  */}
-      <View>
-        <Text>Header Section</Text>
-        left side Cancel Button
-        middle side Card Title field, default is 'Salonx'
-        right side Save Button
-      </View>
+   <SafeAreaView style={{flex: 1, backgroundColor: colors.background}}>
+     <View style={[styles.container, ]}> 
+      <Header />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ColorPlate />
+        {/* Image and Layout section */}
+        <ImageAndLayout />
+        <PersonalDetails />
+        <SocialMedia />
+        <QR />
+        <Settings />
+        
+        
+      </ScrollView>
+      <PreviewCard onPress={() => {navigate("/(cards)/preview-card")}} /> 
 
 
       {/* Color Palette section */}
-      <View>
+      {/* <View>
         <Text>Card Color</Text>
         horizontal scrollable color palette
         first random color selected palatte circle highlighted
         8 colors are selected and highlighted all clickable + ei color icons a use hbe selected and highlighted clickable
-      </View>
+      </View> */}
       {/* Image and Layout section */}
-
+{/* 
       <View>
         <Text>Image and Layout</Text>
         default banner image with salonx logo in middle also card color in the background ( from Color Palette section)
@@ -29,12 +54,12 @@ const createCard = () => {
         + Profile Picture upload button +Company Logo upload button + Banner Image upload button
 
         //Change Image Layout button clickable and modal will open from the bottom of the screen full screen modal with horizontal scrollable all layout card for selection and confirm layout button in the bottom of the modal
-      </View>
+      </View> */}
 
 
 
       {/* personal information section */}
-      <View>
+      {/* <View>
         <Text>Personal Information Section</Text>
         1. first name field
         2. last name field
@@ -47,9 +72,9 @@ const createCard = () => {
         Company field
         Headline field
         *Accreditation add edit and delete button
-      </View>
+      </View> */}
 
-
+{/* 
       social media section
       <View>
         <Text>Social Media Section</Text>
@@ -81,39 +106,46 @@ const createCard = () => {
         +WhatsApp
         
 
-      </View>
+      </View> */}
 
-      {/* QR Code section */}
+      {/* QR Code section
       <View>
         Generate QR Code SVG Image and display it in the center of the screen
-      </View>
+      </View> */}
 
 
       {/* add logo in QR Code Premium features  */}
-      <View>
+      {/* <View>
         <Text>Add Logo in QR Code Premium features</Text>
-      </View>
-
+      </View> */}
+{/* 
      <View>
        <Text>Settings Section</Text>
        1. ADD 'Where We Met' detail toggle button
        2. Remove SALONX Branding toggle button premium features
-     </View>
+     </View> */}
 
 
-
+{/* 
      delete card button
      <View>
       <Text>Delete Card Button</Text>
-     </View>
+     </View> */}
 
-     <View>
+     {/* <View>
       Preview Card Button fixed in bottom of the screen
-     </View>
+     </View> */}
     </View>
+   </SafeAreaView>
   )
 }
 
 export default createCard
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  }
+})

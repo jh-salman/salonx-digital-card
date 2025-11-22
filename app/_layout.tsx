@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from "@/context/AuthContext";
 import SplashScreen from "@/components/SplashScreen";
 import { useEffect, useState } from "react";
 import * as ExpoSplashScreen from 'expo-splash-screen';
+import CardCreateProvider from "@/context/CardCreateContext";
 
 // Prevent native splash screen from auto-hiding
 ExpoSplashScreen.preventAutoHideAsync();
@@ -67,7 +68,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <AppContent />
+        <CardCreateProvider>
+          <AppContent />
+        </CardCreateProvider>
       </AuthProvider>
     </ThemeProvider>
   );

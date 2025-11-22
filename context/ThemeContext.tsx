@@ -13,6 +13,7 @@ interface ThemeContextType {
   colors: {
     background: string;
     text: string;
+    buttonColor: string;
     card: string;
     border: string;
     primary: string;
@@ -28,6 +29,7 @@ const lightColors = {
   background: "#ffffff",
   text: "#1a1a1a",
   card: "#f9f9f9",
+  buttonColor: "#000000",
   border: "#e5e5e5",
   primary: "blue",
   secondary: "#151312",
@@ -35,8 +37,9 @@ const lightColors = {
 };
 
 const darkColors = {
-  background: "#0f0d23",
+  background: "#000",
   text: "#f5f5f5",
+  buttonColor: "#ffffff",
   card: "#1a1a2a",
   border: "#2a2a40",
   primary: "red",
